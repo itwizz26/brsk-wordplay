@@ -1,11 +1,19 @@
+(% load render_bundle from webpack_loader %)
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    (% render_bundle 'app' 'css' %)
     <title>Brsk Word Play</title>
 </head>
 <body>
     <h1>Enter your sentence here:</h1>
+
+    <div id="app"></div>
+
+    (% render_bundle 'app' 'js' %)
 </body>
 </html>
