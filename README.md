@@ -1,6 +1,6 @@
-# BRSK Word Play
+# Brsk Word Play (BWP)
 
-BWP is a Django v5 and Vue v3 attempt at solving the below problem.
+BWP is a Python v3 and Django v5 attempt at solving the below problem.
 
 ## The Problem
 
@@ -14,6 +14,17 @@ Given the sentence lightly fried fish are delicious, the program may return lika
 
 ### Resources we are using
 The client trains for his Scrabble matches using the 370000 word list here: https://github.com/dwyl/english-words/blob/master/words_alpha.txt. The solution should therefore use this same word list to generate the new sentences.
+
+### How to run the app
+
+Once all files have have been extracted/cloned locally, head over to the ~/brsk-wordplay/words directory and start Django in the terminal
+```
+./manage.py runserver
+```
+Open the frontend from:
+``
+http://localhost:8000/
+``
 
 ## License
 MIT &copy; 2024 Daniel Mathebula

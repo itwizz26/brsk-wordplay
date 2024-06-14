@@ -14,35 +14,34 @@
              <form id="words-form" accept-charset="UTF-8" method="POST">
                 {% csrf_token %} 
                 <div class="form-group">
-                    <label for="exampleInputName">Sentence</label>
+                    <label for="exampleInputName">Paste your sentence here and click on 'Scrabble'</label>
                     <input type="text" class="form-control" name="sentence" id="sentence" placeholder="e.g. The quick brown fox jumps over the lazy dog" required="required" />
                </div>
                <hr>
-               <button type="submit" class="btn btn-primary">Scrabble</button>
+               <button id="scrabble" type="button" class="btn btn-primary">Scrabble</button>
              </form>
          </div>
          <div class="col-md-6 offset-md-3 mt-5">
-            <h5>Generated sentence</h5>
+            <h5>[The scrabbled sentence will appear here]</h5>
          </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
          <script type="text/javascript">
-            $(document).on('submit', '#words-from', function(e) {
-                e.preventDefault();
-
-                alert($('#sentence').val());
-
-                $.ajax({
-                    type: 'POST',
-                    url: '/scrabble',
-                    data: {
-                        sentence: $('#sentence').val(),
-                        csrfmiddlewaretoken: $('input[name-csrfmiddlewaretoken]').val()
-                    },
-                    success: function(data) {
-                        $("h5").html(data);
-                    }
+            $(function() {
+                $('#scrabble').on('click', function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                        type: 'POST',
+                        url: '/scrabble',
+                        data: {
+                            sentence: $('#sentence').val(),
+                            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                        },
+                        success: function(response) {
+                            $("h5").html('Your new sentence is: ' + response);
+                        }
+                    });
                 });
             });
          </script>
