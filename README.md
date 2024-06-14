@@ -17,11 +17,19 @@ The client trains for his Scrabble matches using the 370000 word list here: http
 
 ### How to run the app
 
-Once all files have have been extracted/cloned locally, head over to the ~/brsk-wordplay/words directory and start Django in the terminal
+To clone all the files locally from GitHub and run the Django server, run these commdands from the terminal:
+
 ```
-./manage.py runserver
+git clone https://github.com/itwizz26/brsk-wordplay.git
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
 ```
-Open the frontend from:
+Now change into words/ and run this command to start the server:
+```
+./manage.py runserver (or python3 manage.py runserver)
+```
+Open the frontend in your browser from:
 ``
 http://localhost:8000/
 ``
